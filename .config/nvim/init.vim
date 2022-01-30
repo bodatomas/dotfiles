@@ -11,8 +11,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 "FILE UTILITIES
 Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
 Plug 'ryanoasis/vim-devicons'
 "SNIPPETS
 Plug 'SirVer/ultisnips'
@@ -50,8 +50,6 @@ set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 set encoding=utf8
 set laststatus=2
 set scrolloff=10
-
-"Mouse usage
 set mouse=a
 
 "--- Color scheme
@@ -68,12 +66,13 @@ endif
 "--- Auto tag config
 let g:closetag_filenames = '*.html,*.xhtml,*.phtmli,*.php,*.jsx,*.vue'
 
-"--- Fzf ctrl-o
-nnoremap <C-p> :Files<CR>
+"--- Telescope ctrl-p
+nnoremap <C-p> :Telescope find_files<CR>
 nmap <C-b> :e#<CR>
-"set ignore files in .zshrc
-"export FZF_DEFAULT_COMMAND='ag --nocolor --ignore={'node_modules','bower_components'} -g ""'
-"brew install the_silver_searcher
+"Ignoring files
+lua <<EOF
+require('telescope').setup{  defaults = { file_ignore_patterns = { "node_modules","bower_components" }} }
+EOF
 
 "--- Coc binds
 nmap <leader>gd <Plug>(coc-definition)
