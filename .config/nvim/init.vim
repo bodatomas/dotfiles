@@ -3,7 +3,7 @@ call plug#begin('~/.local/share/nvim/site/autoload/plug')
 
 "AUTOCOMPLETE INTELISENSE
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter'
 "HELPERS
 Plug 'chun-yang/auto-pairs'
 Plug 'alvan/vim-closetag'
@@ -69,6 +69,9 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtmli,*.php,*.jsx,*.vue'
 "--- Telescope ctrl-p
 nnoremap <C-p> :Telescope find_files<CR>
 nmap <C-b> :e#<CR>
+nmap <S-b> :bprevious<CR>
+nmap <S-n> :bnext<CR>
+
 "Ignoring files
 lua <<EOF
 require('telescope').setup{  defaults = { file_ignore_patterns = { "node_modules","bower_components" }} }
@@ -133,3 +136,8 @@ nmap <C-J> <C-W><C-J>
 nmap <C-K> <C-W><C-K>
 nmap <C-H> <C-W><C-H>
 nmap <C-L> <C-W><C-L>
+
+"--- Lua script
+lua <<EOF
+require('customSettings')
+EOF
