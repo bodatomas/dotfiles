@@ -23,9 +23,6 @@ Plug 'itchyny/lightline.vim'
 "SPECIFIC LANG
 "javascript
 Plug 'pangloss/vim-javascript'
-"php
-Plug 'captbaritone/better-indent-support-for-php-with-html'
-
 
 call plug#end()
 
