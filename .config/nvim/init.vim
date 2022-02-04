@@ -20,9 +20,9 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'ryanoasis/vim-devicons'
 "SNIPPETS
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'rafamadriz/friendly-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'honza/vim-snippets'
 "THEME
 Plug 'itchyny/lightline.vim'
 Plug 'sainnhe/gruvbox-material'

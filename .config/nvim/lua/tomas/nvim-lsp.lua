@@ -1,6 +1,5 @@
 local nvim_lsp = require('lspconfig')
 local cmp = require('cmp')
-local luasnip = require('luasnip')
 
 -- Use an on_attach function to only map the following keys after
 -- the language server attaches to the current buffer
@@ -39,7 +38,7 @@ cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      vim.fn["UltiSnips#Anon"](args.body)
     end,
   },
   mapping = {
@@ -54,8 +53,6 @@ cmp.setup({
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -63,8 +60,6 @@ cmp.setup({
     ['<S-Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
       else
         fallback()
       end
@@ -73,7 +68,7 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = 'ultisnips' },
     {
       { name = 'buffer' },
     }
@@ -111,5 +106,3 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Snippets
-require("luasnip.loaders.from_vscode").load()
-require'luasnip'.filetype_extend("php", {"html"})
