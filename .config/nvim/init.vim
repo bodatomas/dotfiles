@@ -2,8 +2,13 @@
 call plug#begin('~/.local/share/nvim/site/autoload/plug')
 
 "AUTOCOMPLETE INTELISENSE
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 "HELPERS
 Plug 'chun-yang/auto-pairs'
 Plug 'alvan/vim-closetag'
@@ -15,19 +20,23 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'ryanoasis/vim-devicons'
 "SNIPPETS
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'rafamadriz/friendly-snippets'
 "THEME
-Plug 'rafi/awesome-vim-colorschemes'
 Plug 'itchyny/lightline.vim'
+Plug 'sainnhe/gruvbox-material'
 "SPECIFIC LANG
-"javascript
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 
 "--- Backspace behavior like in any other editor
 set backspace=indent,eol,start
+
+"--- Map leader key
+let mapleader = " "
 
 "--- Setters
 syntax on
@@ -40,7 +49,6 @@ set nowrap
 set noswapfile
 set noerrorbells
 set hidden
-set nohlsearch
 set incsearch
 set expandtab
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
@@ -50,76 +58,20 @@ set scrolloff=10
 set mouse=a
 
 "--- Color scheme
-colorscheme onedark
+colorscheme gruvbox-material
 set background=dark
-let g:onedark_terminal_italics=1
-hi Normal guibg=NONE ctermbg=NONE
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
 
 "--- Auto tag config
 let g:closetag_filenames = '*.html,*.xhtml,*.phtmli,*.php,*.jsx,*.vue'
 
-"--- Telescope ctrl-p
+"--- Telescope keymaps
 nnoremap <C-p> :Telescope find_files<CR>
+nnoremap <C-o> :Telescope live_grep<CR>
 nmap <C-b> :e#<CR>
-nmap <S-b> :bprevious<CR>
-nmap <S-n> :bnext<CR>
-
-"Ignoring files
-lua <<EOF
-require('telescope').setup{  defaults = { file_ignore_patterns = { "node_modules","bower_components" }} }
-EOF
-
-"--- Coc binds
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
-
-"Coc settings
-imap <C-l> <Plug>(coc-snippets-expand)
-"python for snippets: python3 -m pip install --user --upgrade pynvim
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-eslint',
-  \ 'coc-prettier',
-  \ 'coc-json',
-  \ 'coc-tsserver',
-  \ 'coc-css',
-  \ 'coc-html',
-\]
-
-"--- C++ build command for mac
-autocmd FileType cpp nnoremap <leader>fn :!g++ *.cpp -o program && open -a Terminal './program'<CR>
-
-"--- Copy to global
-vnoremap <C-c> "*y
 
 "--- NerdTree
 "For icons need to install font
 map <F7> :NERDTreeToggle<CR>
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" Navigate snippet placeholders using tab
-let g:coc_snippet_next = '<Tab>'
-let g:coc_snippet_prev = '<S-Tab>'
-
-" Use enter to accept snippet expansion
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
 "--- Rainbow Parantheses
 let g:rainbow_active = 1
@@ -127,6 +79,9 @@ let g:rainbow_active = 1
 "--- Split View Defaults
 set splitbelow
 set splitright
+
+"--- Copy to global
+vnoremap <C-c> "*y
 
 "--- Split View Movement
 nmap <C-J> <C-W><C-J>
@@ -136,5 +91,5 @@ nmap <C-L> <C-W><C-L>
 
 "--- Lua script
 lua <<EOF
-require('customSettings')
+require('tomas.init')
 EOF
