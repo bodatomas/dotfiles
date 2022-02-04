@@ -15,10 +15,10 @@ Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 "FILE UTILITIES
-Plug 'scrooloose/nerdtree'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'ryanoasis/vim-devicons'
 "SNIPPETS
 Plug 'SirVer/ultisnips'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
@@ -71,7 +71,7 @@ nmap <C-b> :e#<CR>
 
 "--- NerdTree
 "For icons need to install font
-map <F7> :NERDTreeToggle<CR>
+map <F7> :NvimTreeToggle<CR>
 
 "--- Rainbow Parantheses
 let g:rainbow_active = 1
