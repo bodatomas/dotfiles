@@ -9,6 +9,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 "HELPERS
 Plug 'chun-yang/auto-pairs'
 Plug 'alvan/vim-closetag'
@@ -29,6 +30,7 @@ Plug 'sainnhe/gruvbox-material'
 "SPECIFIC LANG
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'ap/vim-css-color'
 
 call plug#end()
 
@@ -60,6 +62,9 @@ set mouse=a
 "--- Color scheme
 colorscheme gruvbox-material
 set background=dark
+
+"-- Null_ls formating
+nnoremap <leader>fa :lua vim.lsp.buf.formatting_sync()<CR>
 
 "--- Auto tag config
 let g:closetag_filenames = '*.html,*.xhtml,*.phtmli,*.php,*.jsx,*.vue'
