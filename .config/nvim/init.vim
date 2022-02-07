@@ -15,6 +15,9 @@ Plug 'chun-yang/auto-pairs'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+"GIT
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'tpope/vim-fugitive'
 "FILE UTILITIES
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -30,7 +33,6 @@ Plug 'sainnhe/gruvbox-material'
 "SPECIFIC LANG
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'ap/vim-css-color'
 
 call plug#end()
 
