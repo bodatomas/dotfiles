@@ -15,6 +15,7 @@ Plug 'chun-yang/auto-pairs'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'norcalli/nvim-colorizer.lua'
 "GIT
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
@@ -29,7 +30,7 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'honza/vim-snippets'
 "THEME
 Plug 'itchyny/lightline.vim'
-Plug 'sainnhe/gruvbox-material'
+Plug 'joshdick/onedark.vim'
 "SPECIFIC LANG
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -39,7 +40,7 @@ call plug#end()
 "--- Backspace behavior like in any other editor
 set backspace=indent,eol,start
 
-"--- Map leader key
+"--- Map leader key to spacebar
 let mapleader = " "
 
 "--- Setters
@@ -58,15 +59,16 @@ set expandtab
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 set encoding=utf8
 set laststatus=2
+set termguicolors
 set scrolloff=10
 set mouse=a
 
 "--- Color scheme
-colorscheme gruvbox-material
+colorscheme onedark
 set background=dark
 
 "-- Null_ls formating
-nnoremap <leader>fa :lua vim.lsp.buf.formatting_sync()<CR>
+nnoremap <leader>fa :lua vim.lsp.buf.formatting()<CR>
 
 "--- Auto tag config
 let g:closetag_filenames = '*.html,*.xhtml,*.phtmli,*.php,*.jsx,*.vue'
@@ -76,7 +78,7 @@ nnoremap <C-p> :Telescope find_files<CR>
 nnoremap <C-o> :Telescope live_grep<CR>
 nmap <C-b> :e#<CR>
 
-"--- NerdTree
+"--- Nvimtree file explorer
 "For icons need to install font
 map <F7> :NvimTreeToggle<CR>
 

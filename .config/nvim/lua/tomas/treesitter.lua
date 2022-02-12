@@ -8,5 +8,4 @@ configs.setup {
   indent = {
     enabled = true,
   },
-  additional_vim_regex_highlighting = true,
 }

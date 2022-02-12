@@ -6,10 +6,6 @@ export ZSH="/Users/tomas/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-# Ignore files in FZF Ctrl-o search
-export FZF_DEFAULT_COMMAND='ag --hidden --nocolor --ignore={'node_modules','bower_components','.git'} -g ""'
-
-
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
