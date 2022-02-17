@@ -30,7 +30,7 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'honza/vim-snippets'
 "THEME
 Plug 'itchyny/lightline.vim'
-Plug 'joshdick/onedark.vim'
+Plug 'ajmwagar/vim-deus'
 "SPECIFIC LANG
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -64,7 +64,7 @@ set scrolloff=10
 set mouse=a
 
 "--- Color scheme
-colorscheme onedark
+colorscheme deus
 set background=dark
 
 "-- Null_ls formating
